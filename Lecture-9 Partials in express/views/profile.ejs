@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head.ejs') %>
+    <title><%= title %></title>
+</head>
+<body>
+    <%- include('../partials/nav.ejs') %>
+    <h1>Welcome <%= name %></h1>
+    <h3>Email : <%= email %></h3>
+    <h3>City : <%= city %></h3>
+    <h3>Your Skills </h3>
+    <% skills.forEach((skill)=>{ %>
+        <li><%= skill %></li>
+    <% }) %>
+</body>
+</html>

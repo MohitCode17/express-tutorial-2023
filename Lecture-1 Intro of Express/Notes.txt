@@ -1,0 +1,10 @@
+What is Express Js ❓
+
+➡️ Express is a minimal and flexible Node.js web application framework.
+➡️ It provides a robust set of features for web and mobile applications.
+➡️ It is an open source framework developed and maintained by the Node.js foundation.
+
+Why Express ❓
+
+Unlike its competitors like Rails and Django, which have an opinionated way of building applications, Express has no "best way" to do something.
+It is very flexible and pluggable.

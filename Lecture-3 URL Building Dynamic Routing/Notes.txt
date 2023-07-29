@@ -1,0 +1,34 @@
+🤔 URL Building/ Dynamic Routing
+
+We can now define routes, but those are static or fixed. To use the dynamic routes, we SHOULD provide different types of routes.
+Using dynamic routes allows us to pass parameters and process based on them.
+
+app.get('/:id', (req, res) => {
+  res.send('The id you specified is ' + req.params.id);
+});
+
+
+A more complex example of the above is −
+
+app.get('/things/:name/:id', function(req, res) {
+  res.send('id: ' + req.params.id + ' and name: ' + req.params.name);
+});
+
+👉 Use the req.params object to access all the parameters you pass in the url.
+
+
+🤔 Pattern Matched Routes:
+
+You can also use regex to restrict URL parameter matching. Let us assume you need the id to be a 5-digit long number. 
+
+app.get('/things/:id([0-9]{5})', (req, res) => {
+  res.send('id: ' + req.params.id);
+});
+
+
+🤔 Get Data from the browser
+
+app.get("", (req, res) => {
+  console.log("Data send by browswer ==>>> ", req.query)
+  res.send("This is home page");
+})

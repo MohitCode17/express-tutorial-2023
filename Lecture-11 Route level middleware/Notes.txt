@@ -1,0 +1,4 @@
+🤔 Route Level Middleware
+
+- Can Apply on single Route
+- Apply Middleware in the group of route

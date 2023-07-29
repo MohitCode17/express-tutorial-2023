@@ -1,0 +1,4 @@
+🤔 Partials in Express
+
+Partials avoid repetition of the same code on several web pages.
+For example You may want the same header in several web pages. EJS partials work like EJS layout too in creating single fix content in web page.

@@ -1,0 +1,13 @@
+🤔 How should I structure our application ❓
+
+- MVC Style Controllers:
+
+MVC stands for Model, View, Controller is an architectural pattern that separates an application into three main logical components: the model, the view, and the controller.
+
+MVC is architecture used in building Web Servers that focus on reliability and making the development process much simpler and easier since it composes the Web Server into three separate parts.
+
+👉Controller: is the part that takes care of client request processing which handles the HTTP Request and returns a response the response could be either a JSON if you’re calling an API endpoint or regular HTML webpage.
+
+👉Model: is the database interface which lets you interact with the database API and create different entity schemas of your app on the database (MySQL, MongoDB), it gets called from controller depending on the client’s request if it needs a stored data then the controller will ask the model interface for providing it with the needed data.
+
+👉View: is what compiles and renders into plain HTML and what the client in most cases going to get back as a response of what he requested (for ex: to view his profile details), the view needs to use a Template Engine for doing the rendering process where the controller feed it with needed data (data from database and client) and the view renders and convert everything into plain HTML that the browser could understand and display.

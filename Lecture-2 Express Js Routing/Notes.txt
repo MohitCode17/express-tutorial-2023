@@ -1,0 +1,54 @@
+🤔 Express Js - Routing
+
+Routing refers to determining how an application responds to a client request to a particular endpoint, which is a URI (or path) and a specific HTTP request method (GET, POST, and so on).
+
+🤔 Route definition takes the following structure:
+
+- app.METHOD(PATH, HANDLER)
+
+  Where:
+    - app is an instance of express
+    - METHOD is an HTTP request method(get, post, put, delete)
+    - PATH is the route at which the request will run.
+    - HANDLER is the function executed when the route is matched.
+
+
+🤔 Express.Router
+
+Defining routes like in example of (index.js) is very tedious to maintain. To separate the routes from our main index.js file, 
+we will use Express.Router
+
+👉Create a new file called router.js and type the following in it.
+
+const express = require('express');
+const router = express.Router();
+
+router.get('/', (req, res)=>{
+  res.send('GET route on things.');
+});
+
+module.exports = router;
+
+👉Now to use this router in our index.js, type in the following before the app.listen function call.
+
+const express = require('Express');
+const app = express();
+const router = require('./router');
+app.use(router);
+app.listen(3000);
+
+-------------------------------------------------------------------------------------------------------------------
+👉 What is HTTP?
+
+The Hypertext Transfer Protocol (HTTP) is designed to enable communications between clients and servers.
+HTTP works as a request-response protocol between a client and server.
+
+👉 HTTP Methods:
+
+GET: GET is used to request data from a specified resource.
+	
+POST: POST is used to send data to a server to create/update a resource.
+	
+PUT: PUT is used to send data to a server to create/update a resource.
+
+DELETE: The DELETE method deletes the specified resource.

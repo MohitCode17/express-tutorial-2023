@@ -1,0 +1,32 @@
+🤔 Serving Static Files in Express
+
+Static files are files that don't change when your application is running.
+
+👉 To serve static files such as images, CSS files, and JavaScript files, use the "express.static" built-in middleware function in Express.
+
+express.static(root, [options])
+
+The root argument specifies the root directory from which to serve static assets.
+
+app.use(express.static('public'))
+
+Now, you can load the files that are in the public directory.
+
+👉 To use multiple static assets directories, call the express.static middleware function multiple times.
+
+app.use(express.static('public'))
+app.use(express.static('files'))
+
+
+👉 To create a virtual path prefix (where the path does not actually exist in the file system) for files that are served by the express.static function, 
+
+specify a mount path for the static directory, as shown below:
+
+app.use('/static', express.static('public'))
+
+
+However, the path that you provide to the express.static function is relative to the directory from where you launch your node process. 
+If you run the express app from another directory, it’s safer to use the absolute path of the directory that you want to serve:
+
+const path = require('path')
+app.use('/static', express.static(path.join(__dirname, 'public')))
