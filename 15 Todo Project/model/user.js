@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema({
   password: {
     required: true,
     type: String,
-    select: false,
+    select: false,  // hide password when getting user details
   },
   createdAt: {
     type: Date,
