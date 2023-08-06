@@ -8,7 +8,7 @@ export const sendCookies = async (user, res, statusCode = 200, message) => {
     .status(statusCode)
     .cookie("token", token, {
       httpOnly: true,
-      maxAge: 15 * 60 * 1000,
+      maxAge: 30 * 60 * 1000, // 30mins
     })
     .json({
       success: true,

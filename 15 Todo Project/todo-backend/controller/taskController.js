@@ -3,11 +3,10 @@ import { Task } from "../model/task.js";
 // ============== Create Task Controller ================
 export const addTask = async (req, res) => {
   try {
-    const { title, description } = req.body;
+    const { text } = req.body;
 
     await Task.create({
-      title,
-      description,
+      text,
       user: req.user,
     });
 
@@ -37,24 +36,32 @@ export const getTask = async (req, res) => {
       success: false,
       error,
     });
-  };
+  }
 };
 
 // ============== Update Task Controller ================
 export const updateTask = async (req, res) => {
   try {
     const { id } = req.params;
-    const task = await Task.findByIdAndUpdate({ _id: id }, req.body, {
-      new: true,
-    });
+    const task = await Task.findById(id);
+
+    if (!task)
+      return res
+        .status(404)
+        .json({ success: false, message: "Task not found" });
+
+    task.isCompleted = !task.isCompleted;
+
+    await task.save();
+
     res.status(200).json({
-        success: true,
-        task,
+      success: true,
+      message: "Task updated",
     });
   } catch (error) {
     res.status(500).json({
-        success: false,
-        error,
+      success: false,
+      error,
     });
   }
 };
@@ -64,23 +71,21 @@ export const deleteTask = async (req, res) => {
   try {
     const { id } = req.params;
     const task = await Task.findById(id);
-    if (!task) {
-      return res.status(404).json({
-        success: false,
-        message: "Task not found",
-      });
-    }
+    if (!task)
+      return res
+        .status(404)
+        .json({ success: false, message: "Task not found" });
 
     await task.deleteOne();
 
     res.status(200).json({
       success: true,
-      message: "Task Deleted",
+      message: "Task Deleted Successfully",
     });
   } catch (error) {
     res.status(500).json({
       success: false,
       error,
     });
-  }
+  };
 };

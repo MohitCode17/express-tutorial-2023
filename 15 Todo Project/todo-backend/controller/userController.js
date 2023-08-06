@@ -1,24 +1,26 @@
 import { User } from "../model/user.js";
 import bcrypt from "bcrypt";
 import { sendCookies } from "../utils/features.js";
-import jwt from "jsonwebtoken";
 
 // ============ Register user api controller ============
 export const registerUser = async (req, res) => {
   try {
     const { name, email, password } = req.body;
+
+    // Find user with email(check if user is already exists)
     let user = await User.findOne({ email });
 
-    if (user) {
+    if(user) {
       return res.status(422).json({
         success: false,
         message: "User alreay exist",
       });
     }
 
-    // Hassed password
+    // Password Hashing
     const hashedPassword = await bcrypt.hash(password, 10);
 
+    // Create new user if not exists
     user = await User.create({
       name,
       email,
