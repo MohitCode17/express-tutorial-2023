@@ -5,7 +5,7 @@ import { toast } from "react-hot-toast";
 import { Context } from "../main";
 import "../styles/form.css";
 
-const server = "http://localhost:8000/api/v1/users";
+const server = "http://localhost:8000/api/v1";
 
 const Register = () => {
   const { isAuthenticated, setIsAuthenticated } = useContext(Context);
@@ -30,7 +30,7 @@ const Register = () => {
     const { name, email, password } = formData;
     try {
       const { data } = await axios.post(
-        `${server}/register`,
+        `${server}/users/register`,
         { name, email, password },
         {
           headers: { "Content-Type": "application/json" },
@@ -45,7 +45,7 @@ const Register = () => {
     }
   };
 
-  if (isAuthenticated) return <Navigate to={"/"} />;
+  if (isAuthenticated) return <Navigate to={"/todo"} />;
 
   return (
       <section className="register">

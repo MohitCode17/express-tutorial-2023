@@ -5,7 +5,7 @@ import { Link, Navigate } from "react-router-dom";
 import { Context } from "../main";
 import "../styles/form.css";
 
-const server = "http://localhost:8000/api/v1/users";
+const server = "http://localhost:8000/api/v1";
 
 const Login = () => {
   const { isAuthenticated, setIsAuthenticated } = useContext(Context);
@@ -26,7 +26,7 @@ const Login = () => {
     const { email, password } = formData;
     try {
       const { data } = await axios.post(
-        `${server}/login`,
+        `${server}/users/login`,
         {
           email,
           password,
@@ -46,7 +46,7 @@ const Login = () => {
     }
   };
 
-  if (isAuthenticated) return <Navigate to={"/"} />;
+  if (isAuthenticated) return <Navigate to={"/todo"} />;
 
   return (
     <section className="login">

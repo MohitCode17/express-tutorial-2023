@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../main";
 import axios from "axios";
 import { toast } from "react-hot-toast";
@@ -8,6 +8,7 @@ import "../styles/header.css"
 const server = "http://localhost:8000/api/v1/users";
 
 const Header = () => {
+  const navigate = useNavigate();
 
   const { isAuthenticated, setIsAuthenticated } = useContext(Context);
 
@@ -18,6 +19,7 @@ const Header = () => {
       });
       setIsAuthenticated(false);
       toast.success(data.message);
+      navigate("/sign-in");
     } catch (error) {
       setIsAuthenticated(true);
       toast.success(error.response.data.message);
@@ -30,9 +32,6 @@ const Header = () => {
       <nav className="nav">
         <Link to={"/"} className="nav_link">
           Home
-        </Link>
-        <Link to={"/profile"} className="nav_link">
-          Profile
         </Link>
         {isAuthenticated ? (
           <button onClick={logoutHandler} className="button">

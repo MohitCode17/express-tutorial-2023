@@ -1,36 +1,11 @@
-import { useContext } from "react"
-import { Context } from "../main"
-import "../styles/home.css"
+import { Link } from "react-router-dom"
+import { AiOutlineArrowRight } from "react-icons/ai"
 
 const Home = () => {
-
-  const { user, setIsAuthenticated } = useContext(Context);
-
-  console.log(user);
-
   return (
-    <div className="todo-wrapper">
-      <h1>Welcome, Mohit</h1>
-      <h4>Your tasks</h4>
-
-      <div className="todos">
-        <div className="todo is-complete">
-          <div className="checkbox"></div>
-          <div className="text">Buy a mangoes</div>
-          <div className="delete-todo">x</div>
-        </div>
-        <div className="todo">
-          <div className="checkbox"></div>
-          <div className="text">Buy a mangoes</div>
-          <div className="delete-todo">x</div>
-        </div>
-        <div className="todo">
-          <div className="checkbox"></div>
-          <div className="text">Buy a mangoes</div>
-          <div className="delete-todo">x</div>
-        </div>
-      </div>
-
+    <div className="home">
+      <h1>Your Tasks, Your Way</h1>
+      <Link to={"/sign-in"} className="homeBtn" >Continue with Todo <AiOutlineArrowRight/></Link>
     </div>
   )
 }

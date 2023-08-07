@@ -42,13 +42,7 @@ export const getTask = async (req, res) => {
 // ============== Update Task Controller ================
 export const updateTask = async (req, res) => {
   try {
-    const { id } = req.params;
-    const task = await Task.findById(id);
-
-    if (!task)
-      return res
-        .status(404)
-        .json({ success: false, message: "Task not found" });
+    const task = await Task.findById(req.params.id);
 
     task.isCompleted = !task.isCompleted;
 
@@ -56,7 +50,8 @@ export const updateTask = async (req, res) => {
 
     res.status(200).json({
       success: true,
-      message: "Task updated",
+      task,
+      message: "Task completed",
     });
   } catch (error) {
     res.status(500).json({
@@ -80,6 +75,7 @@ export const deleteTask = async (req, res) => {
 
     res.status(200).json({
       success: true,
+      task,
       message: "Task Deleted Successfully",
     });
   } catch (error) {
